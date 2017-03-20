@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>InventoryTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">CoffeeMaker (Mar 20, 2017 12:06:02 AM)</a> &gt; <a href="../../index.html" class="el_group">CoffeeMaker</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc442.project4.coffeemaker</a> &gt; <span class="el_source">InventoryTest.java</span></div><h1>InventoryTest.java</h1><pre class="source lang-java linenums">package edu.towson.cis.cosc442.project4.coffeemaker;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+<span class="fc" id="L11">public class InventoryTest {</span>
+	Inventory it;
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L15">		it = new Inventory();</span>
+		
+<span class="fc" id="L17">	}</span>
+
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L21">	}</span>
+
+	@Test
+	public void testGetChocolate() throws Exception {
+<span class="fc" id="L25">		setUp();</span>
+<span class="fc" id="L26">		assertEquals(15,it.getChocolate(),0.001);</span>
+<span class="fc" id="L27">		it.setChocolate(1);</span>
+<span class="fc" id="L28">		assertEquals(1,it.getChocolate(),0.001);</span>
+<span class="fc" id="L29">		it.setChocolate(-1);</span>
+<span class="fc" id="L30">		assertEquals(0,it.getChocolate(),0.001);</span>
+		
+		
+<span class="fc" id="L33">	}</span>
+
+
+	@Test
+	public void testGetCoffee() throws Exception {
+<span class="fc" id="L38">		setUp();</span>
+<span class="fc" id="L39">		assertEquals(15,it.getCoffee(),0.001);</span>
+<span class="fc" id="L40">		it.setCoffee(1);</span>
+<span class="fc" id="L41">		assertEquals(1,it.getCoffee(),0.001);</span>
+<span class="fc" id="L42">		it.setCoffee(-5);</span>
+<span class="fc" id="L43">		assertEquals(0,it.getCoffee(),0.001);</span>
+		
+		
+<span class="fc" id="L46">	}</span>
+
+	@Test
+	public void testGetMilk() throws Exception {
+<span class="fc" id="L50">		setUp();</span>
+<span class="fc" id="L51">		assertEquals(15,it.getMilk(),0.001);</span>
+<span class="fc" id="L52">		it.setMilk(1);</span>
+<span class="fc" id="L53">		assertEquals(1,it.getMilk(),0.001);</span>
+<span class="fc" id="L54">		it.setMilk(-3);</span>
+<span class="fc" id="L55">		assertEquals(0,it.getMilk(),0.001);</span>
+<span class="fc" id="L56">	}</span>
+
+
+	@Test
+	public void testGetSugar() throws Exception {
+<span class="fc" id="L61">		setUp();</span>
+<span class="fc" id="L62">		assertEquals(15,it.getSugar(),0.001);</span>
+<span class="fc" id="L63">		it.setSugar(1);</span>
+<span class="fc" id="L64">		assertEquals(1,it.getSugar(),0.001);</span>
+<span class="fc" id="L65">		it.setSugar(-2);</span>
+<span class="fc" id="L66">		assertEquals(0,it.getSugar(),0.001);</span>
+<span class="fc" id="L67">	}</span>
+
+
+	@Test
+	public void testEnoughIngredients() throws Exception {
+<span class="fc" id="L72">		setUp();</span>
+<span class="fc" id="L73">		Recipe r = new Recipe ();</span>
+<span class="fc" id="L74">		r.setName(&quot;Choclate&quot;);</span>
+<span class="fc" id="L75">		r.setAmtChocolate(1);</span>
+<span class="fc" id="L76">		r.setAmtCoffee(2);</span>
+<span class="fc" id="L77">		r.setAmtMilk(1);</span>
+<span class="fc" id="L78">		r.setAmtSugar(1);</span>
+<span class="fc" id="L79">		r.setPrice(10);</span>
+		
+<span class="fc" id="L81">		assertEquals(true,it.enoughIngredients(r));</span>
+<span class="fc" id="L82">		it.setChocolate(0);</span>
+<span class="fc" id="L83">		assertEquals(false,it.enoughIngredients(r));</span>
+<span class="fc" id="L84">		it.setMilk(0);</span>
+<span class="fc" id="L85">		assertEquals(false,it.enoughIngredients(r));</span>
+<span class="fc" id="L86">		it.setSugar(0);</span>
+<span class="fc" id="L87">		assertEquals(false,it.enoughIngredients(r));</span>
+<span class="fc" id="L88">		it.setCoffee(1);</span>
+<span class="fc" id="L89">		assertEquals(false,it.enoughIngredients(r));</span>
+		
+		
+		
+<span class="fc" id="L93">	}</span>
+	
+	@Test
+	public void testToString () throws Exception{
+<span class="fc" id="L97">		setUp();</span>
+<span class="fc" id="L98">		String itString = &quot;Coffee: &quot; + it.getCoffee() + String.format(&quot;%n&quot;) +</span>
+<span class="fc" id="L99">		&quot;Milk: &quot; + it.getMilk() + String.format(&quot;%n&quot;) +</span>
+<span class="fc" id="L100">		&quot;Sugar: &quot; + it.getSugar() + String.format(&quot;%n&quot;) +</span>
+<span class="fc" id="L101">		&quot;Chocolate: &quot; + it.getChocolate() + String.format(&quot;%n&quot;);</span>
+<span class="fc" id="L102">		assertEquals(itString,it.toString());</span>
+<span class="fc" id="L103">	}</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>CoffeeMaker (Mar 20, 2017 12:06:02 AM)</div></body></html>
