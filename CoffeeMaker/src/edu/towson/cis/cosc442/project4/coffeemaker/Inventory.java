@@ -31,11 +31,12 @@ public class Inventory {
      * @param chocolate int
      */
     public void setChocolate(int chocolate) {
-    	if(chocolate >= 0) {
-    		Inventory.chocolate = chocolate;
+    	if(chocolate <= 0) {
+    		int a = chocolate - chocolate;
+    		Inventory.chocolate = a;
     	}
     	else {
-    		Inventory.chocolate = 0;
+    		Inventory.chocolate = chocolate;
     	}
         
     }
@@ -70,7 +71,7 @@ public class Inventory {
      * @param milk int
      */
     public void setMilk(int milk) {
-    	if(milk >= 0) {
+    	if(milk > 0) {
     		Inventory.milk = milk;
     	}
     	else {
@@ -105,16 +106,7 @@ public class Inventory {
      * @return boolean */
     public boolean enoughIngredients(Recipe r) {
         boolean isEnough = true;
-        if(Inventory.coffee < r.getAmtCoffee()) {
-            isEnough = false;
-        }
-        if(Inventory.milk < r.getAmtMilk()) {
-            isEnough = false;
-        }
-        if(Inventory.sugar < r.getAmtSugar()) {
-            isEnough = false;
-        }
-        if(Inventory.chocolate < r.getAmtChocolate()) {
+        if((Inventory.coffee < r.getAmtCoffee()) || (Inventory.milk < r.getAmtMilk()) || (Inventory.sugar < r.getAmtSugar()) || (Inventory.chocolate < r.getAmtChocolate())) {
             isEnough = false;
         }
         return isEnough;

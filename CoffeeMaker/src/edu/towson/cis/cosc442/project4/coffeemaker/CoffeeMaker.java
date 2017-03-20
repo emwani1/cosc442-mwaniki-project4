@@ -142,14 +142,7 @@ public class CoffeeMaker {
     
      * @return int */
     public int makeCoffee(Recipe r, int amtPaid) {
-        boolean canMakeCoffee = true;
-        if(amtPaid < r.getPrice()) {
-            canMakeCoffee = false;
-        }
-        if(!inventory.enoughIngredients(r)) {
-            canMakeCoffee = false;
-        }
-        if(canMakeCoffee) {
+        if(inventory.enoughIngredients(r) && amtPaid >= r.getPrice()) {
 	        inventory.setCoffee(inventory.getCoffee() + r.getAmtCoffee()); 
 	        inventory.setMilk(inventory.getMilk() - r.getAmtMilk());
 	        inventory.setSugar(inventory.getSugar() - r.getAmtSugar());

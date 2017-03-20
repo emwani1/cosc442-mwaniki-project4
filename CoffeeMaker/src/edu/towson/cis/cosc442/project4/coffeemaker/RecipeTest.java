@@ -40,7 +40,7 @@ public class RecipeTest {
 		setUp();
 		re.setAmtMilk(50);
 		assertEquals(50,re.getAmtMilk());
-		re.setAmtMilk(-11);
+		re.setAmtMilk(0);
 		assertEquals(0,re.getAmtMilk());
 	}
 

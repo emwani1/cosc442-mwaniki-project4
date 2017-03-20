@@ -25,11 +25,11 @@ public class Recipe {
      * @param amtChocolate int
      */
     public void setAmtChocolate(int amtChocolate) {
-    	if(amtChocolate >= 0) {
-    		this.amtChocolate = amtChocolate;
+    	if(amtChocolate < 0) {
+    		this.amtChocolate = 0;
     	}
     	else {
-    		this.amtChocolate = 0;
+    		this.amtChocolate = amtChocolate;
     	}
     }
     /**
@@ -63,11 +63,11 @@ public class Recipe {
      * @param amtMilk int
      */
     public void setAmtMilk(int amtMilk) {
-    	if(amtMilk >= 0) {
-    		this.amtMilk = amtMilk;
+    	if(amtMilk <= 0) {
+    		this.amtMilk = 0;
     	}
     	else {
-    		this.amtMilk = 0;
+    		this.amtMilk = amtMilk;
     	}
     }
     /**
@@ -82,7 +82,7 @@ public class Recipe {
      * @param amtSugar int
      */
     public void setAmtSugar(int amtSugar) {
-    	if(amtSugar >= 0) {
+    	if(amtSugar > 0 || amtSugar == 0) {
     		this.amtSugar = amtSugar;
     	}
     	else {
