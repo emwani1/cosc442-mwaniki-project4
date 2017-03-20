@@ -125,9 +125,9 @@ public class Inventory {
      * @return String
      */
     public String toString() {
-    	return "Coffee: " + getCoffee() + "\n" +
-			"Milk: " + getMilk() + "\n" +
-			"Sugar: " + getSugar() + "\n" +
-			"Chocolate: " + getChocolate() + "\n";
+    	return "Coffee: " + getCoffee() + String.format("%n") +
+			"Milk: " + getMilk() + String.format("%n") +
+			"Sugar: " + getSugar() + String.format("%n") +
+			"Chocolate: " + getChocolate() + String.format("%n");
     }
 }
